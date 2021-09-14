@@ -1,8 +1,16 @@
 const Header = () => {
-    return ( 
+  return (
     <div>
-        HEADER
-    </div> );
-}
- 
+      HEADER
+      <button
+        onClick={() => {
+          localStorage.removeItem("userInfo");
+        }}
+      >
+        LOGOUT
+      </button>
+    </div>
+  );
+};
+
 export default Header;
