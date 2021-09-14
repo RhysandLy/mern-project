@@ -20,11 +20,16 @@ const Header = () => {
           <div className={styles.headerLink}>Home</div>
         </Link>
       </div>
-
       <div className={styles.rightLinksContainer}>
-        <div className={styles.headerLink} onClick={logoutHandler}>
-          Logout
-        </div>
+        {userInfo ? (
+          <div className={styles.headerLink} onClick={logoutHandler}>
+            Logout
+          </div>
+        ) : (
+          <Link style={{ textDecoration: "none" }} to="/login">
+            <div className={styles.headerLink}>Login</div>
+          </Link>
+        )}
       </div>
     </div>
   );
