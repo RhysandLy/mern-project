@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  background: #628395;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 40px;
+  height: 80px;
+}
+.leftLinksContainer {
+  display: flex;
+  margin-right: auto;
+}
+.rightLinksContainer {
+    display: flex;
+    margin-left: auto;
+  }
+.headerLink{
+    margin: 8px;
+    color: #DBAD6A;
+    cursor: pointer;
+}

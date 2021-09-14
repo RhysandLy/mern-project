@@ -1,12 +1,11 @@
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+
 
 const Home = () => {
-    return ( 
+  return (
     <div>
-        <Header />
-        <Footer />
-    </div> );
-}
- 
+        CONTENT
+    </div>
+  );
+};
+
 export default Home;
