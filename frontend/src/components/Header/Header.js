@@ -20,10 +20,15 @@ const Header = () => {
           <div className={styles.headerLink}>Home</div>
         </Link>
       </div>
-      <div className={styles.rightLinksContainer}>
+      <div>
         {userInfo ? (
-          <div className={styles.headerLink} onClick={logoutHandler}>
-            Logout
+          <div className={styles.rightLinksContainer}>
+            <Link style={{ textDecoration: "none" }} to="/dashboard">
+              <div className={styles.headerLink}>Dashboard</div>
+            </Link>
+            <div className={styles.headerLink} onClick={logoutHandler}>
+              Logout
+            </div>
           </div>
         ) : (
           <Link style={{ textDecoration: "none" }} to="/login">

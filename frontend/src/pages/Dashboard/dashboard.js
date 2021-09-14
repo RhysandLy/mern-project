@@ -24,9 +24,8 @@ const Dashboard = () => {
   }, [dispatch]);
   return (
     <div>
-      {console.log(students)}
       {error && <div>{error}</div>}
-      <StudentList />
+      <StudentList students={students} />
     </div>
   );
 };

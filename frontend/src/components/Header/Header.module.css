@@ -13,6 +13,7 @@
 .rightLinksContainer {
     display: flex;
     margin-left: auto;
+    flex-direction: row;
   }
 .headerLink{
     margin: 8px;
