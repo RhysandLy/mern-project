@@ -5,6 +5,9 @@ import {
   STUDENTS_LIST_FAIL,
   STUDENTS_LIST_REQUEST,
   STUDENTS_LIST_SUCCESS,
+  STUDENTS_UPDATE_FAIL,
+  STUDENTS_UPDATE_REQUEST,
+  STUDENTS_UPDATE_SUCCESS,
 } from "../constants/studentConstants";
 import axios from "axios";
 
@@ -53,7 +56,7 @@ export const createStudents =
 
       const { data } = await axios.post(
         `/api/students/create`,
-        { firstName, lastName, email, DOB, location},
+        { firstName, lastName, email, DOB, location,},
         config
       );
 
@@ -68,6 +71,41 @@ export const createStudents =
           : error.message;
       dispatch({
         type: STUDENTS_CREATE_FAIL,
+        payload: message,
+      });
+    }
+  };
+
+  export const updateStudents =
+  (id, firstName, lastName, email, DOB, location, pic) => async (dispatch) => {
+    try {
+      dispatch({
+        type: STUDENTS_UPDATE_REQUEST,
+      });
+
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+
+      const { data } = await axios.put(
+        `/api/students/${id}`,
+        { firstName, lastName, email, DOB, location, pic},
+        config
+      );
+
+      dispatch({
+        type: STUDENTS_UPDATE_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({
+        type: STUDENTS_UPDATE_FAIL,
         payload: message,
       });
     }

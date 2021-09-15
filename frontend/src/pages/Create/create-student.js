@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { createStudents } from "../../actions/studentActions";
@@ -15,6 +15,15 @@ const CreateStudent = () => {
 
   const studentCreate = useSelector((state) => state.studentCreate);
   const { loading, error, student } = studentCreate;
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  useEffect(() => {
+    if (!userInfo) {
+      history.push("/login");
+    }
+  }, []);
 
   const reset = () => {
     setDate(new Date());
@@ -33,6 +42,8 @@ const CreateStudent = () => {
   };
   return (
     <div>
+        {error && <div>{error}</div>}
+        {loading && <div>LOADING...</div>}
       <form onSubmit={submitHandler}>
         <label>
           First Name:
