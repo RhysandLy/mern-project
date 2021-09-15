@@ -1,7 +1,14 @@
-.studentImage{
-    object-fit: cover;
-    height: 50px;
+.studentImage {
+  object-fit: cover;
+  height: 50px;
 }
-.td{
-    text-align: center;
+.td {
+  text-align: center;
+  border: 1px solid black;
+}
+.table {
+  border-collapse: collapse;
+}
+.th {
+  border: 1px solid black;
 }

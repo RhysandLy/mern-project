@@ -24,22 +24,20 @@ const StudentList = ({ students = [], search }) => {
     <div>
       {console.log(students)}
       <div>
-        <div>
           {/* <Select
             options={options}
             defaultValue={options[0]}
             value={options.find((obj) => obj.value === selectedValue)}
             onChange={handleChange}
           /> */}
-        </div>
-        <table>
+        <table className={styles.table}>
           <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Date of Birth</th>
-            <th>Location</th>
-            <th>Image</th>
+            <th className={styles.th}>First Name</th>
+            <th className={styles.th}>Last Name</th>
+            <th className={styles.th}>Email</th>
+            <th className={styles.th}>Date of Birth</th>
+            <th className={styles.th}>Location</th>
+            <th className={styles.th}>Image</th>
           </tr>
           {students
             .filter((filteredStudent) =>
@@ -61,7 +59,7 @@ const StudentList = ({ students = [], search }) => {
                 <td className={styles.td}>
                   <img className={styles.studentImage} src={student.pic} />
                 </td>
-                <td className={styles.td}>
+                <td>
                   <Link
                     style={{ textDecoration: "none" }}
                     to={`/student/edit/${student._id}`}
