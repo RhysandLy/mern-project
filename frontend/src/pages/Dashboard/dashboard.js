@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import StudentList from "../../components/StudentList/StudentList";
 import { listStudents } from "../../actions/studentActions";
 import { useHistory } from "react-router";
+import Heading from "../../components/Heading/Heading";
 
 const Dashboard = () => {
   const history = useHistory();
@@ -23,10 +24,10 @@ const Dashboard = () => {
     }
   }, [dispatch]);
   return (
-    <div>
+    <Heading title={`Welcome ${userInfo.name}`}>
       {error && <div>{error}</div>}
       <StudentList students={students} />
-    </div>
+    </Heading>
   );
 };
 

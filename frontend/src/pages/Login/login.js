@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../actions/userActions";
+import Heading from "../../components/Heading/Heading";
 
 const Login = ({history}) => {
   const [email, setEmail] = useState("");
@@ -25,7 +26,7 @@ const Login = ({history}) => {
 
   return (
     <div>
-      LOGIN
+      <Heading title="Login">
       {loading && <div>LOADING...</div>}
       {error && <div>{error}</div>}
       <form onSubmit={submitHandler}>
@@ -49,6 +50,7 @@ const Login = ({history}) => {
         </label>
         <button type="submit">Login</button>
       </form>
+      </Heading>
     </div>
   );
 };

@@ -1,3 +1,5 @@
+import styles from "./StudentList.module.css";
+
 const StudentList = ({ students = [] }) => {
   const parseISOString = (s) => {
     const date = new Date(s);
@@ -5,9 +7,7 @@ const StudentList = ({ students = [] }) => {
   };
   return (
     <div>
-      <div>STUDENTS</div>
       {console.log(students)}
-
       <div>
         <table>
           <tr>
@@ -19,14 +19,19 @@ const StudentList = ({ students = [] }) => {
             <th>Image</th>
           </tr>
           {students.map((student) => (
-            <tr>
-              <td>{student.firstName}</td>
-              <td>{student.lastName}</td>
-              <td>{student.email}</td>
-              <td>{parseISOString(student.DOB)}</td>
-              <td>{student.location}</td>
-              <td>
-                <img src={student.pic} />
+            <tr key={student._id}>
+              <td className={styles.td}>{student.firstName}</td>
+              <td className={styles.td}>{student.lastName}</td>
+              <td className={styles.td}>{student.email}</td>
+              <td className={styles.td}>{parseISOString(student.DOB)}</td>
+              <td className={styles.td}> {student.location}</td>
+              <td className={styles.td}>
+                <img className={styles.studentImage} src={student.pic} />
+              </td>
+              <td className={styles.td}>
+                <button>Edit</button>
+                <button>View Full Student</button>
+                <button>Make Curriculum</button>
               </td>
             </tr>
           ))}

@@ -26,6 +26,9 @@ const Header = () => {
             <Link style={{ textDecoration: "none" }} to="/dashboard">
               <div className={styles.headerLink}>Dashboard</div>
             </Link>
+            <Link style={{ textDecoration: "none" }} to="/create-student">
+              <div className={styles.headerLink}>Create Student</div>
+            </Link>
             <div className={styles.headerLink} onClick={logoutHandler}>
               Logout
             </div>

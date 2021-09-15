@@ -1,0 +1,7 @@
+.studentImage{
+    object-fit: cover;
+    height: 50px;
+}
+.td{
+    text-align: center;
+}

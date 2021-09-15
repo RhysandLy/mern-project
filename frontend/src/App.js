@@ -5,6 +5,7 @@ import Login from "./pages/Login/login";
 import Register from "./pages/Register/register";
 import Header from "./components/Header/Header";
 import Dashboard from "./pages/Dashboard/dashboard";
+import CreateStudent from "./pages/Create/create-student";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/" component={Home} exact />
       <Route path="/login" component={Login} exact />
       <Route path="/dashboard" component={Dashboard} exact />
+      <Route path="/create-student" component={CreateStudent} exact />
     </BrowserRouter>
   );
 }
