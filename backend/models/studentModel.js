@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+//TODO: UPDATE SCHEMA to allow same email address and add customer number
+
 const studentSchema = mongoose.Schema(
   {
     firstName: {
