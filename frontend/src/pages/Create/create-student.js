@@ -41,6 +41,8 @@ const CreateStudent = () => {
   };
 
   const postPic = (pics) => {
+    
+    //TODO: add upload progress bar
       const data = new FormData();
       data.append("file", pics);
       data.append("upload_preset", "mern-app");
