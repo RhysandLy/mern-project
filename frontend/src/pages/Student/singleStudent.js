@@ -44,6 +44,29 @@ const SingleStudent = ({ match, history }) => {
     history.push("/dashboard");
   };
 
+  const postPic = (pics) => {
+    //TODO: add upload progress bar
+    const data = new FormData();
+    data.append("file", pics);
+    data.append("upload_preset", "mern-app");
+    data.append("cloud_name", "rhys-cloud-image-storage");
+    fetch(
+      "https://api.cloudinary.com/v1_1/rhys-cloud-image-storage/image/upload",
+      {
+        method: "post",
+        body: data,
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.url.toString());
+        setPic(data.url.toString());
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     const fetching = async () => {
       const { data } = await axios.get(`/api/students/${match.params.id}`);
@@ -111,12 +134,11 @@ const SingleStudent = ({ match, history }) => {
           />
         </label>
         <label>
-          Image:
+          Pic:
           <input
-            type="text"
+            type="file"
             name="password"
-            value={pic}
-            onChange={(e) => setPic(e.target.value)}
+            onChange={(e) => postPic(e.target.files[0])}
           />
         </label>
         <button type="submit">Update Student</button>

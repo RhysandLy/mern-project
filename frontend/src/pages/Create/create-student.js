@@ -9,6 +9,10 @@ const CreateStudent = () => {
   const [lastName, setLastName] = useState("");
   const [location, setLocation] = useState("");
   const [date, setDate] = useState(new Date());
+  const [pic, setPic] = useState(
+    "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
+  );
+  const [picMessage, setPicMessage] = useState(null);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -18,6 +22,9 @@ const CreateStudent = () => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
+  // to upload images
+  // https://api.cloudinary.com/v1_1/rhys-cloud-image-storage/image/upload
 
   useEffect(() => {
     if (!userInfo) {
@@ -33,17 +40,38 @@ const CreateStudent = () => {
     setLocation("");
   };
 
+  const postPic = (pics) => {
+      const data = new FormData();
+      data.append("file", pics);
+      data.append("upload_preset", "mern-app");
+      data.append("cloud_name", "rhys-cloud-image-storage");
+      fetch(
+        "https://api.cloudinary.com/v1_1/rhys-cloud-image-storage/image/upload",
+        {
+          method: "post",
+          body: data,
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setPic(data.url.toString());
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+  };
+
   const submitHandler = async (e) => {
     e.preventDefault();
-    dispatch(createStudents(firstName, lastName, email, date, location));
+    dispatch(createStudents(firstName, lastName, email, date, location, pic));
     reset();
 
     history.push("/dashboard");
   };
   return (
     <div>
-        {error && <div>{error}</div>}
-        {loading && <div>LOADING...</div>}
+      {error && <div>{error}</div>}
+      {loading && <div>LOADING...</div>}
       <form onSubmit={submitHandler}>
         <label>
           First Name:
@@ -88,6 +116,15 @@ const CreateStudent = () => {
             name="password"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
+          />
+        </label>
+        <label>
+          Image:
+          <input
+            type="file"
+            accept="image/*"
+            name="pic"
+            onChange={(e) => postPic(e.target.files[0])}
           />
         </label>
         <button type="submit">Create Student</button>

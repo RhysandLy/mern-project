@@ -42,7 +42,7 @@ export const listStudents = () => async (dispatch) => {
 };
 
 export const createStudents =
-  (firstName, lastName, email, DOB, location) => async (dispatch) => {
+  (firstName, lastName, email, DOB, location, pic) => async (dispatch) => {
     try {
       dispatch({
         type: STUDENTS_CREATE_REQUEST,
@@ -56,7 +56,7 @@ export const createStudents =
 
       const { data } = await axios.post(
         `/api/students/create`,
-        { firstName, lastName, email, DOB, location,},
+        { firstName, lastName, email, DOB, location, pic},
         config
       );
 
