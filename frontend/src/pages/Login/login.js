@@ -33,13 +33,7 @@ const Login = ({ history }) => {
   };
 
   return (
-    <div
-      // style={{
-      //   backgroundColor: "#0B395B",
-      //   backgroundImage: "radial-gradient(#6FABD3 0.8px, #0B395B 0.8px)",
-      //   backgroundSize: "16px 16px",
-      // }}
-    >
+    <div>
       {loading && <div>LOADING...</div>}
       {error && <div>{error}</div>}
       <Stack

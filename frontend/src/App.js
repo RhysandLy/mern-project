@@ -12,7 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Route path="/" component={Home} exact />
+      <Route path="/" component={Login} exact />
       <Route path="/login" component={Login} exact />
       <Route path="/dashboard" component={Dashboard} exact />
       <Route path="/create-student" component={CreateStudent} exact />

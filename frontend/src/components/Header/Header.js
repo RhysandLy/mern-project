@@ -1,12 +1,8 @@
-import styles from "./Header.module.css";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/userActions";
 //styles fro mmaterial ui
-import { Typography, Button, Toolbar, Box, AppBar, IconButton  } from "@mui/material";
-//assest and icons
-import HomeIcon from '@mui/icons-material/Home';
-
+import { Typography, Button, Toolbar, Box, AppBar  } from "@mui/material";
 const Header = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -21,7 +17,6 @@ const Header = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          {/*TODO: fix navbar*/}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             HCA Admin
           </Typography>
@@ -56,33 +51,6 @@ const Header = () => {
         </Toolbar>
       </AppBar>
     </Box>
-
-    // <div className={styles.header}>
-    //   <div className={styles.leftLinksContainer}>
-    //     <Link style={{ textDecoration: "none" }} to="/">
-    //       <div className={styles.headerLink}>Home</div>
-    //     </Link>
-    //   </div>
-    //   <div>
-    //     {userInfo ? (
-    //       <div className={styles.rightLinksContainer}>
-    //         <Link style={{ textDecoration: "none" }} to="/dashboard">
-    //           <div className={styles.headerLink}>Dashboard</div>
-    //         </Link>
-    //         <Link style={{ textDecoration: "none" }} to="/create-student">
-    //           <div className={styles.headerLink}>Create Student</div>
-    //         </Link>
-    //         <div className={styles.headerLink} onClick={logoutHandler}>
-    //           Logout
-    //         </div>
-    //       </div>
-    //     ) : (
-    //       <Link style={{ textDecoration: "none" }} to="/login">
-    //         <div className={styles.headerLink}>Login</div>
-    //       </Link>
-    //     )}
-    //   </div>
-    // </div>
   );
 };
 
