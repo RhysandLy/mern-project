@@ -8,12 +8,10 @@ import {
   TableHead,
   TableRow,
   Paper,
-  ButtonGroup,
   Button,
   Stack,
+  Avatar,
 } from "@mui/material";
-// import Select from "react-select";
-// import { useState } from "react";
 
 import EditIcon from "@mui/icons-material/Edit";
 import PreviewIcon from "@mui/icons-material/Preview";
@@ -58,12 +56,19 @@ const StudentList = ({ students = [], search }) => {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  <img className={styles.studentImage} src={student.pic} />
+                  <Avatar
+                    variant="rounded"
+                    sx={{ width: 84, height: 112 }}
+                    alt={student.firstName}
+                    src={student.pic}
+                  />
                 </TableCell>
                 <TableCell align="right">{student.firstName}</TableCell>
                 <TableCell align="right">{student.lastName}</TableCell>
                 <TableCell align="right">{student.email}</TableCell>
-                <TableCell align="right">{student.DOB}</TableCell>
+                <TableCell align="right">
+                  {parseISOString(student.DOB)}
+                </TableCell>
                 <TableCell align="right">{student.location}</TableCell>
                 <TableCell align="right">
                   <Stack
@@ -90,54 +95,6 @@ const StudentList = ({ students = [], search }) => {
         </TableBody>
       </Table>
     </TableContainer>
-
-    // <div>
-    //   <div>
-    //     <table className={styles.table}>
-    //       <tr>
-    //         <th className={styles.th}>First Name</th>
-    //         <th className={styles.th}>Last Name</th>
-    //         <th className={styles.th}>Email</th>
-    //         <th className={styles.th}>Date of Birth</th>
-    //         <th className={styles.th}>Location</th>
-    //         <th className={styles.th}>Image</th>
-    //       </tr>
-    //       {students
-    //         .filter((filteredStudent) =>
-    //           filteredStudent.firstName
-    //             .toLowerCase()
-    //             .includes(search.toLowerCase()) || filteredStudent.lastName
-    //             .toLowerCase()
-    //             .includes(search.toLowerCase())|| filteredStudent.location
-    //             .toLowerCase()
-    //             .includes(search.toLowerCase())
-    //         )
-    //         .map((student) => (
-    //           <tr key={student._id}>
-    //             <td className={styles.td}>{student.firstName}</td>
-    //             <td className={styles.td}>{student.lastName}</td>
-    //             <td className={styles.td}>{student.email}</td>
-    //             <td className={styles.td}>{parseISOString(student.DOB)}</td>
-    //             <td className={styles.td}> {student.location}</td>
-    //             <td className={styles.td}>
-    //               <img className={styles.studentImage} src={student.pic} />
-    //             </td>
-    //             <td>
-    //               <Link
-    //                 style={{ textDecoration: "none" }}
-    //                 to={`/student/edit/${student._id}`}
-    //               >
-    //                 <button>Edit</button>
-    //               </Link>
-
-    //               <button>View Full Student</button>
-    //               <button>Make Curriculum</button>
-    //             </td>
-    //           </tr>
-    //         ))}
-    //     </table>
-    //   </div>
-    // </div>
   );
 };
 
