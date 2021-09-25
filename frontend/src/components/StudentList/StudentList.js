@@ -85,9 +85,14 @@ const StudentList = ({ students = [], search }) => {
                         Edit
                       </Button>
                     </Link>
-                    <Button variant="contained" startIcon={<PreviewIcon />}>
-                      View
-                    </Button>
+                    <Link
+                      style={{ textDecoration: "none" }}
+                      to={`/student/${student._id}`}
+                    >
+                      <Button variant="contained" startIcon={<PreviewIcon />}>
+                        View
+                      </Button>
+                    </Link>
                   </Stack>
                 </TableCell>
               </TableRow>
