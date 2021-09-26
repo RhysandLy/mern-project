@@ -5,6 +5,8 @@ import { listStudents } from "../../actions/studentActions";
 import { useHistory } from "react-router";
 import Heading from "../../components/Heading/Heading";
 import Search from "../../components/Search/Search";
+import Loading from "../../components/Loading/Loading";
+import loader from "../../animation/loader.json";
 
 const Dashboard = () => {
   const history = useHistory();
@@ -17,7 +19,7 @@ const Dashboard = () => {
   const { success: successCreate } = studentCreate;
 
   const studentList = useSelector((state) => state.studentList);
-  const { students, error } = studentList;
+  const { students, error, loading } = studentList;
 
   const studentUpdate = useSelector((state) => state.studentUpdate);
   const { success: successUpdate } = studentUpdate;
@@ -35,8 +37,23 @@ const Dashboard = () => {
   return (
     <Heading title={`Welcome`}>
       {error && <div>{error}</div>}
-      <Search setSearch={setSearch} />
-      <StudentList students={students} search={search} />
+      {loading ? (
+        <div
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          <Loading lotti={loader} height={300} width={300} />
+        </div>
+      ) : (
+        <div>
+          <Search setSearch={setSearch} />
+          <StudentList students={students} search={search} />
+        </div>
+      )}
     </Heading>
   );
 };
