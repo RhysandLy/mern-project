@@ -5,10 +5,10 @@ MongoDB Express React and NodeJS (MERN)
 
 ## Quick Start
 
-cd mern-project
-npm install
-cd frontend
-npm install
+- cd mern-project
+- npm install
+- cd frontend
+- npm install
 
 ### `npm run dev`
 
